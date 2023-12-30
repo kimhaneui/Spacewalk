@@ -1,38 +1,68 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* App.css */
+#layout {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  font-style: Pretendard;
+  color: #5A6066;
+  font-size: 14px;
 }
 
-.App-link {
-  color: #61dafb;
+.table {
+  width: 100%;
+  max-width: 1080px;
+  margin-top: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.table-header {
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #DFE5EB;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 6px;
+  min-width: 60px
+}
+
+thead tr {
+  border-radius: 20px;
+  background-color: #F5F8FA;
+}
+
+.btn-container {
+  position: relative;
+  height: 50px;
+  font-size: bold;
+}
+
+.date-btn {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  background: none;
+  color: #5A6066;
+  border: none;
+}
+
+.border-btn {
+  width: 102px;
+  height: 40px;
+  padding: 8px 26px 8px 14px;
+  border-radius: 32px;
+  border: 1px solid #ddd;
+  color: #5A6066;
+  background: none;
+  cursor: pointer;
+  /* 클릭 가능한 요소로 표시 */
 }
