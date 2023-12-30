@@ -10,6 +10,12 @@
   font-size: 14px;
 }
 
+h3{
+  color: #14171A;
+  font-size: 20px;
+  font-weight: 700;
+}
+
 .table {
   width: 100%;
   max-width: 1080px;
@@ -64,5 +70,10 @@ thead tr {
   color: #5A6066;
   background: none;
   cursor: pointer;
-  /* 클릭 가능한 요소로 표시 */
+}
+.arrow {
+  width: 15px;
+  position: absolute;
+  top: 30%;
+  padding-left: 10px;
 }
