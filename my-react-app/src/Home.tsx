@@ -15,8 +15,11 @@ const Home: React.FC = () => {
   // const [tableData, setTableData] = useState<any[]>([]); ;
   const [sortModalOpen, setSortModalOpen] = useState(false);
   const [filterModalOpen, setFilterModalOpen] = useState(false);
-  const [issueStatus, setIssueStatus] = useState('이슈 상태');
-  const [sortStatus, setSortStatus] = useState('작성일 순');
+  const [issueStatus, setIssueStatus] = useState('all');
+  const [sortStatus, setSortStatus] = useState({
+    id: 'created',
+    text: '작성일 순',
+  });
   const [isBlueIcon, setIsBlueIcon] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
@@ -54,12 +57,12 @@ const Home: React.FC = () => {
   const openSortModal = () => {
     setSortModalOpen(true);
   };
-  const closeSortModal = (id: any) => {
-    setSortStatus(id);
+  const closeSortModal = (item: any) => {
+    setSortStatus(item);
     setSortModalOpen(false);
   };
   const closeFilterModal = (id: any) => {
-    if (id !== '이슈 상태') {
+    if (id !== 'all') {
       setIssueStatus(id);
       setIsBlueIcon(true);
     } else {
@@ -84,12 +87,10 @@ const Home: React.FC = () => {
           <div className='btn-container'>
             <button
               id='issueStatusButton'
-              className={`border-btn ${
-                issueStatus !== '이슈 상태' ? 'blue' : ''
-              }`}
+              className={`border-btn ${issueStatus !== 'all' ? 'blue' : ''}`}
               onClick={openFilterModal}
             >
-              {issueStatus}
+              {issueStatus === 'all' ? '이슈 상태' : issueStatus}
               <img
                 className='arrow'
                 src={isBlueIcon ? blueArrowIcon : blackArrowIcon}
@@ -97,7 +98,7 @@ const Home: React.FC = () => {
               />
             </button>
             <button className='date-btn' onClick={openSortModal}>
-              {sortStatus}
+              {sortStatus.text}
               <img className='arrow' src={blackArrowIcon} alt='Icon' />
             </button>
             <SortModal isOpen={sortModalOpen} onClose={closeSortModal} />
@@ -106,7 +107,11 @@ const Home: React.FC = () => {
         </div>
         <Table data={currentItems} />
       </div>
-      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };

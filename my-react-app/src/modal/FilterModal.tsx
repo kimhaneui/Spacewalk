@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Button from '../component/Button';
 import './Modal.css';
 
@@ -8,28 +8,34 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
-  const buttons = [
-    { id: 'all', text: '전체' },
-    { id: 'open', text: 'open' },
-    { id: 'closed', text: 'closed' },
-  ];
-  const [checkedButton, setCheckedButton] = useState(null);
+  const buttons = useMemo(
+    () => [
+      { id: 'all', text: '전체' },
+      { id: 'open', text: 'open' },
+      { id: 'closed', text: 'closed' },
+    ],
+    [] // 의존성 배열 비워두기
+  );
+  const [checkedButton, setCheckedButton] = useState<string | null>(null);
 
   const handleButtonClick = (buttonId: any) => {
     setCheckedButton(buttonId);
   };
 
   const buttonClick = () => {
-    console.log(checkedButton, 'checkedButton');
     onClose(checkedButton);
   };
+
+  useEffect(() => {
+    if (buttons.length > 0 && checkedButton === null) {
+      setCheckedButton(buttons[0].id);
+    }
+  }, [buttons, checkedButton]);
+
   return (
-    <div className={`modal ${isOpen ? 'open' : ''}`} onClick={onClose}>
+    <div className={`modal ${isOpen ? 'open' : ''}`}>
       {isOpen && (
-        <div
-          className='modal-content'
-          onClick={(e) => e.stopPropagation()}
-        >
+        <div className='modal-content'>
           <div>
             <p>이슈 상태</p>
           </div>

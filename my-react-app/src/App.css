@@ -63,6 +63,7 @@ thead tr {
 }
 
 .border-btn {
+  position: relative;
   width: 102px;
   height: 40px;
   padding: 8px 26px 8px 14px;
@@ -76,7 +77,8 @@ thead tr {
 .arrow {
   width: 15px;
   position: absolute;
-  top: 30%;
+  top: 50%;
+  transform: translateY(-50%);
   padding-left: 5px;
 }
 
