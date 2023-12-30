@@ -12,7 +12,8 @@ import Table from './component/Table';
 import Pagination from './component/Pagination';
 
 const Home: React.FC = () => {
-  const [tableData, setTableData] = useState<any[]>([]); ;
+  const [tableData, setTableData] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   const [sortModalOpen, setSortModalOpen] = useState(false);
   const [filterModalOpen, setFilterModalOpen] = useState(false);
   const [issueStatus, setIssueStatus] = useState('all');
@@ -27,14 +28,17 @@ const Home: React.FC = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const tableData = await getGitHubIssues(issueStatus,sortStatus.id);
+        setLoading(true);
+        const tableData = await getGitHubIssues(issueStatus, sortStatus.id);
         setTableData(tableData);
       } catch (error) {
         console.error('Error:', error);
+      } finally {
+        setLoading(false);
       }
     }
     fetchData();
-  }, [issueStatus,sortStatus]);
+  }, [issueStatus, sortStatus]);
 
   const openFilterModal = () => {
     setFilterModalOpen(true);
@@ -65,38 +69,49 @@ const Home: React.FC = () => {
   const totalPages = Math.ceil(tableData.length / itemsPerPage);
 
   return (
-    <div id='layout'>
-      <div className='table'>
-        <div className='table-header'>
-          <h3>이슈정리</h3>
-          <div className='btn-container'>
-            <button
-              id='issueStatusButton'
-              className={`border-btn ${issueStatus !== 'all' ? 'blue' : ''}`}
-              onClick={openFilterModal}
-            >
-              {issueStatus === 'all' ? '이슈 상태' : issueStatus}
-              <img
-                className='arrow'
-                src={isBlueIcon ? blueArrowIcon : blackArrowIcon}
-                alt='Arrow Icon'
-              />
-            </button>
-            <button className='date-btn' onClick={openSortModal}>
-              {sortStatus.text}
-              <img className='arrow' src={blackArrowIcon} alt='Icon' />
-            </button>
-            <SortModal isOpen={sortModalOpen} onClose={closeSortModal} />
-            <FilterModal isOpen={filterModalOpen} onClose={closeFilterModal} />
+    <div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div id='layout'>
+          <div className='table'>
+            <div className='table-header'>
+              <h3>이슈정리</h3>
+              <div className='btn-container'>
+                <button
+                  id='issueStatusButton'
+                  className={`border-btn ${
+                    issueStatus !== 'all' ? 'blue' : ''
+                  }`}
+                  onClick={openFilterModal}
+                >
+                  {issueStatus === 'all' ? '이슈 상태' : issueStatus}
+                  <img
+                    className='arrow'
+                    src={isBlueIcon ? blueArrowIcon : blackArrowIcon}
+                    alt='Arrow Icon'
+                  />
+                </button>
+                <button className='date-btn' onClick={openSortModal}>
+                  {sortStatus.text}
+                  <img className='arrow' src={blackArrowIcon} alt='Icon' />
+                </button>
+                <SortModal isOpen={sortModalOpen} onClose={closeSortModal} />
+                <FilterModal
+                  isOpen={filterModalOpen}
+                  onClose={closeFilterModal}
+                />
+              </div>
+            </div>
+            <Table data={currentItems} />
           </div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </div>
-        <Table data={currentItems} />
-      </div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      )}
     </div>
   );
 };
