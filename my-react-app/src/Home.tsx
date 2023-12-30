@@ -4,6 +4,7 @@ import { getGitHubIssues } from './api';
 import blackArrowIcon from './image/black-arrow.png';
 import SortModal from './modal/SortModal';
 import FilterModal from './modal/FilterModal';
+import Table from './component/Table';
 
 const Home: React.FC = () => {
   // const [tableData, setTableData] = useState<any[]>([]); ;
@@ -59,25 +60,7 @@ const Home: React.FC = () => {
             <FilterModal isOpen={filterModalOpen} onClose={closeFilterModal} />
           </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>번호</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성일</th>
-              <th>수정일</th>
-              <th>코멘트 수</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tableData.map((row: any, index: number) => (
-              <tr key={row.id}>
-                <td>{index + 1}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Table data={tableData} />
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-// Modal.tsx
 import React, { useState } from 'react';
 import Button from '../component/Button';
 import './Modal.css';
@@ -10,9 +9,9 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   const buttons = [
-    { id: 1, text: '전체' },
-    { id: 2, text: 'open' },
-    { id: 3, text: 'closed' },
+    { id: 'all', text: '전체' },
+    { id: 'open', text: 'open' },
+    { id: 'closed', text: 'closed' },
   ];
   const [checkedButton, setCheckedButton] = useState(null);
 
@@ -26,7 +25,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   };
   return (
     <div className={`modal ${isOpen ? 'open' : ''}`} onClick={onClose}>
-      {/* 모달 내용 */}
       {isOpen && (
         <div
           className='modal-content'

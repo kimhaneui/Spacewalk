@@ -18,6 +18,7 @@
   visibility: visible;
   opacity: 1;
 }
+
 .modal-content {
   width: 320px;
   height: 110px;
@@ -27,7 +28,17 @@
   color: #14171A;
   padding: 20px 20px 70px;
 }
-.modal-content p{
+
+.sort-content {
+  width: 400px;
+  height: 180px;
+  background-color: #fff;
+  border-radius: 10px;
+  color: #14171A;
+  padding: 20px 20px 70px;
+}
+
+.modal-content p {
   font-size: 15px;
 }
 
@@ -36,11 +47,44 @@
   gap: 10px;
   color: white;
 }
-.confirm-btn{
+
+.confirm-btn {
   width: 100%;
   text-align: center;
   margin-top: 35px;
 }
-.checked{
+
+.checked {
   background-color: #1A8CFF;
+}
+
+.sort-modal {
+  padding-left: 0;
+}
+
+.sort-modal li {
+  list-style: none;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 500;
+  color: #363B40;
+  width: 400px;
+  height: 56px;
+  padding: 15px, 20px, 15px, 20px;
+  position: relative;
+}
+
+.sort-header {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.check-icon {
+  position: absolute;
+  width: 19px;
+  top: 5.5px;
+  right: 2.75px;
 }
