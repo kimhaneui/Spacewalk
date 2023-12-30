@@ -31,12 +31,12 @@ const SortModal: React.FC<SortModalProps> = ({ isOpen, onClose }) => {
           <ul className='sort-modal'>
             {buttons.map((button) => (
               <li
-                key={button.text}
-                onClick={() => handleButtonClick(button.text)}
-                className={checkedButton === button.text ? 'clicked' : ''}
+                key={button.id}
+                onClick={() => handleButtonClick(button.id)}
+                className={checkedButton === button.id ? 'clicked' : ''}
               >
                 {button.text}
-                {checkedButton === button.text && (
+                {checkedButton === button.id && (
                   <img className='check-icon' src={icon} alt='Check Icon' />
                 )}
               </li>

@@ -36,9 +36,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           <div className='button-container'>
             {buttons.map((button) => (
               <Button
-                key={button.text}
-                onClick={() => handleButtonClick(button.text)}
-                className={checkedButton === button.text ? 'checked' : ''}
+                key={button.id}
+                onClick={() => handleButtonClick(button.id)}
+                className={checkedButton === button.id ? 'checked' : ''}
               >
                 {button.text}
               </Button>

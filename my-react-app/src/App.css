@@ -10,7 +10,7 @@
   font-size: 14px;
 }
 
-h3{
+h3 {
   color: #14171A;
   font-size: 20px;
   font-weight: 700;
@@ -72,9 +72,59 @@ thead tr {
   background: none;
   cursor: pointer;
 }
+
 .arrow {
   width: 15px;
   position: absolute;
   top: 30%;
   padding-left: 5px;
+}
+
+.blue {
+  color: #1A8CFF;
+}
+
+/* Pagination.css */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: white;
+  color: #7B848C;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  align-items: center;
+
+}
+
+.pagination button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.pagination button.active {
+  color: black;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  background: #F0F4F7;
+
+}
+
+.pagination .arrow-icon {
+  margin: 0 3px;
+}
+
+.pg-arrow {
+  width: 24px;
+  opacity: 50%;
 }
