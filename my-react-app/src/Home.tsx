@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { getGitHubIssues } from './api';
 
 import blackArrowIcon from './image/black-arrow.png';
+import SortModal from './modal/SortModal';
+import FilterModal from './modal/FilterModal';
 
 const Home: React.FC = () => {
   // const [tableData, setTableData] = useState<any[]>([]); ;
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [sortModalOpen, setSortModalOpen] = useState(false);
   const [filterModalOpen, setFilterModalOpen] = useState(false);
   const [issueStatus, setIssueStatus] = useState('이슈 상태');
   const [sortStatus, setSortStatus] = useState('작성일 순');
@@ -14,8 +16,14 @@ const Home: React.FC = () => {
   const openFilterModal = () => {
     setFilterModalOpen(true);
   };
-  const openModal = () => {
-    setIsModalOpen(true);
+  const openSortModal = () => {
+    setSortModalOpen(true);
+  };
+  const closeFilterModal = (id: any) => {
+    setFilterModalOpen(false)
+  };
+  const closeSortModal = (id: any) => {
+    setSortModalOpen(false)
   };
   useEffect(() => {
     async function fetchData() {
@@ -38,19 +46,17 @@ const Home: React.FC = () => {
             <button
               id='issueStatusButton'
               className='border-btn'
-              onClick={openModal}
+              onClick={openFilterModal}
             >
               {issueStatus}
-              <img
-                className='arrow'
-                src={blackArrowIcon}
-                alt='Icon'
-              />
+              <img className='arrow' src={blackArrowIcon} alt='Icon' />
             </button>
-            <button className='date-btn' onClick={openFilterModal}>
+            <button className='date-btn' onClick={openSortModal}>
               {sortStatus}
               <img className='arrow' src={blackArrowIcon} alt='Icon' />
             </button>
+            <SortModal isOpen={sortModalOpen} onClose={closeSortModal} />
+            <FilterModal isOpen={filterModalOpen} onClose={closeFilterModal} />
           </div>
         </div>
         <table>

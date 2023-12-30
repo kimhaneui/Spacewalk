@@ -59,6 +59,7 @@ thead tr {
   background: none;
   color: #5A6066;
   border: none;
+  cursor: pointer;
 }
 
 .border-btn {
