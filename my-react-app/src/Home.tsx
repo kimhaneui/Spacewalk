@@ -12,7 +12,7 @@ import Table from './component/Table';
 import Pagination from './component/Pagination';
 
 const Home: React.FC = () => {
-  // const [tableData, setTableData] = useState<any[]>([]); ;
+  const [tableData, setTableData] = useState<any[]>([]); ;
   const [sortModalOpen, setSortModalOpen] = useState(false);
   const [filterModalOpen, setFilterModalOpen] = useState(false);
   const [issueStatus, setIssueStatus] = useState('all');
@@ -23,33 +23,18 @@ const Home: React.FC = () => {
   const [isBlueIcon, setIsBlueIcon] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-  const tableData = [
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 4 },
-    { id: 5 },
-    { id: 6 },
-    { id: 7 },
-    { id: 8 },
-    { id: 9 },
-    { id: 10 },
-    { id: 11 },
-    { id: 12 },
-  ];
 
   useEffect(() => {
     async function fetchData() {
       try {
-        // 퍼블 완료후 데이터 확인필요
-        // const tableData = await getGitHubIssues();
-        // setTableData(tableData);
+        const tableData = await getGitHubIssues(issueStatus,sortStatus.id);
+        setTableData(tableData);
       } catch (error) {
         console.error('Error:', error);
       }
     }
     fetchData();
-  }, []);
+  }, [issueStatus,sortStatus]);
 
   const openFilterModal = () => {
     setFilterModalOpen(true);

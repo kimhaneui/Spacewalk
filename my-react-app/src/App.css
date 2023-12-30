@@ -38,7 +38,11 @@ table {
 th,
 td {
   padding: 6px;
-  min-width: 60px
+  min-width: 60px;
+  max-width: 500px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 thead tr {

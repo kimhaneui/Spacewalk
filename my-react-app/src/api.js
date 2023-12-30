@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export async function getGitHubIssues() {
+export async function getGitHubIssues(status, sort) {
   const API_ENDPOINT = 'https://api.github.com/repos/facebook/react/issues';
   const API_VERSION = '2022-11-28';
  
@@ -9,6 +9,7 @@ export async function getGitHubIssues() {
       headers: {
         'X-GitHub-Api-Version': API_VERSION,
       },
+      params:{sort,status}
     });
 
     return response.data;

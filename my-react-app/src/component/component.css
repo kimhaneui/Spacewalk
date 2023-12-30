@@ -9,4 +9,9 @@ button {
   color: white;
   border: none;
 }
-
+.tlign-r{
+  text-align: right;
+}
+.tlign-c{
+  text-align: center;
+}
