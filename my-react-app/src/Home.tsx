@@ -20,10 +20,10 @@ const Home: React.FC = () => {
     setSortModalOpen(true);
   };
   const closeFilterModal = (id: any) => {
-    setFilterModalOpen(false)
+    setFilterModalOpen(false);
   };
   const closeSortModal = (id: any) => {
-    setSortModalOpen(false)
+    setSortModalOpen(false);
   };
   useEffect(() => {
     async function fetchData() {

@@ -18,8 +18,29 @@
   visibility: visible;
   opacity: 1;
 }
-.modal-content{
-  width: 500px;
-  height: 300px;
-  background-color: white;
+.modal-content {
+  width: 320px;
+  height: 110px;
+  background-color: #fff;
+  border-radius: 10px;
+  justify-content: center;
+  color: #14171A;
+  padding: 20px 20px 70px;
+}
+.modal-content p{
+  font-size: 15px;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  color: white;
+}
+.confirm-btn{
+  width: 100%;
+  text-align: center;
+  margin-top: 35px;
+}
+.checked{
+  background-color: #1A8CFF;
 }
