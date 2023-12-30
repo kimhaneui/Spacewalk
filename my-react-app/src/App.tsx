@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home';
+import NotFound from './NotFound';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/home" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </div>
